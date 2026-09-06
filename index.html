@@ -60,17 +60,14 @@
     <span class="corner corner--br" aria-hidden="true"></span>
 
     <div class="hero-side hero-side--left" aria-hidden="true">
-      <div class="mini-panel">
-        <div class="mp-title"><span class="mp-dot"></span>BIADIO</div>
-        <div class="mp-row">Emigrotafb</div>
-        <div class="mp-row">ERN Sr Suite</div>
-        <div class="mp-row">Wok &amp; Tas Sto</div>
-      </div>
-      <div class="mini-panel">
-        <div class="mp-title"><span class="mp-dot"></span>Analytics</div>
-        <div class="mp-row">This month</div>
-        <div class="mp-bar"><span style="width:64%"></span></div>
-      </div>
+      <figure class="mini-shot">
+        <img src="assets/proof/crops/hero-home-brief.png" alt="" width="400" height="260" loading="eager">
+        <figcaption>Daily brief</figcaption>
+      </figure>
+      <figure class="mini-shot">
+        <img src="assets/proof/crops/hero-pipeline.png" alt="" width="400" height="280" loading="eager">
+        <figcaption>Pipeline</figcaption>
+      </figure>
     </div>
 
     <div class="hero-inner">
@@ -82,22 +79,22 @@
       <p class="sub">Custom websites, CRMs, and AI — engineered around how your business actually runs.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="work.html">See what custom looks like</a>
-        <a class="btn-ghost" href="consultation.html">Talk to us · Book a consultation <span class="arrow">→</span></a>
+        <div class="hero-cta-secondary">
+          <a class="btn-ghost" href="consultation.html">Book a consultation <span class="arrow">→</span></a>
+          <span class="cta-note">No obligation.</span>
+        </div>
       </div>
     </div>
 
     <div class="hero-side hero-side--right" aria-hidden="true">
-      <div class="mini-panel">
-        <div class="mp-title"><span class="mp-dot"></span>CRM</div>
-        <div class="mp-row">Leads</div>
-        <div class="mp-row">Qualified</div>
-        <div class="mp-row">Closed</div>
-      </div>
-      <div class="mini-panel">
-        <div class="mp-title"><span class="mp-dot"></span>Assistant</div>
-        <div class="mp-row">Scheduled a follow-up</div>
-        <div class="mp-row">Drafted a reply</div>
-      </div>
+      <figure class="mini-shot mini-shot--copper">
+        <img src="assets/proof/crops/hero-overview.png" alt="" width="400" height="260" loading="eager">
+        <figcaption>Intake</figcaption>
+      </figure>
+      <figure class="mini-shot mini-shot--copper">
+        <img src="assets/proof/crops/hero-bids.png" alt="" width="400" height="260" loading="eager">
+        <figcaption>Bids</figcaption>
+      </figure>
     </div>
 
     <div class="grid-floor" aria-hidden="true"></div>
@@ -116,27 +113,56 @@
 
   <section class="section">
     <div class="wrap">
+      <article class="home-proof reveal">
+        <div class="home-proof__copy">
+          <span class="eyebrow">Real build</span>
+          <h2>Custom CRM. Not a template with a coat of paint.</h2>
+          <p>Pipelines, intake, bids, and estimating — built around how an operator actually runs. Screenshots are anonymized.</p>
+          <a class="btn-primary" href="work.html">See the full case study</a>
+        </div>
+        <a class="home-proof__shot" href="work.html">
+          <img src="assets/proof/crops/proof-strip.png" alt="Anonymized custom CRM home screen" width="1100" height="620" loading="lazy">
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">A peek at what we build</span>
         <h2>Three systems. Zero templates.</h2>
       </div>
       <div class="peek-grid">
-        <article class="glass-card card--cyan peek-card reveal">
+        <article class="glass-card card--cyan peek-card peek-card--glow reveal">
           <div class="ghost-num ghost-num--cyan">01</div>
           <h3 class="card-title">Websites</h3>
           <p class="card-desc">Sites that look sharp and get leads to convert.</p>
+          <div class="peek-preview peek-preview--web" aria-hidden="true">
+            <div class="pp-bar"></div>
+            <div class="pp-hero"></div>
+            <div class="pp-tiles"><span></span><span></span><span></span></div>
+          </div>
           <a class="btn-ghost" href="services.html">Learn more <span class="arrow">→</span></a>
         </article>
-        <article class="glass-card card--copper peek-card reveal">
+        <article class="glass-card card--copper peek-card peek-card--glow peek-card--copper reveal">
           <div class="ghost-num ghost-num--copper">02</div>
           <h3 class="card-title">Custom CRMs</h3>
           <p class="card-desc">Fully custom. Works how you work — not how everyone else does.</p>
-          <a class="btn-ghost" href="services.html">Learn more <span class="arrow">→</span></a>
+          <div class="peek-preview peek-preview--img" aria-hidden="true">
+            <img src="assets/proof/crops/peek-crm.png" alt="" width="640" height="360" loading="lazy">
+          </div>
+          <a class="btn-ghost" href="work.html">See the build <span class="arrow">→</span></a>
         </article>
-        <article class="glass-card card--violet peek-card reveal">
+        <article class="glass-card card--violet peek-card peek-card--glow reveal">
           <div class="ghost-num ghost-num--violet">03</div>
           <h3 class="card-title">AI Assistants</h3>
           <p class="card-desc">Trained on your business — follow-ups, FAQs, first-pass drafts.</p>
+          <div class="peek-preview peek-preview--ai" aria-hidden="true">
+            <div class="pp-bubble them">I can schedule that for tomorrow.</div>
+            <div class="pp-bubble me">Send a reminder the morning of.</div>
+            <div class="pp-bubble them">Done. You're all set.</div>
+          </div>
           <a class="btn-ghost" href="services.html">Learn more <span class="arrow">→</span></a>
         </article>
       </div>
@@ -145,9 +171,12 @@
 
   <div class="wrap">
     <div class="cta-band reveal">
-      <h2>Have a system in mind?</h2>
+      <div>
+        <h2>Have a system in mind?</h2>
+        <p class="cta-note">No obligation.</p>
+      </div>
       <div class="cta-band-actions">
-        <a class="btn-primary" href="consultation.html">Start a build</a>
+        <a class="btn-primary" href="consultation.html">Book a consultation</a>
       </div>
     </div>
   </div>
