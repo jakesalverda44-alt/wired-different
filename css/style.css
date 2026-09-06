@@ -189,8 +189,8 @@ p { color: var(--muted); }
   background-size: 60px 60px, 60px 60px, 100% 100%;
   transform: perspective(500px) rotateX(72deg);
   transform-origin: bottom;
-  mask-image: linear-gradient(to top, rgba(0,0,0,0.95), transparent 78%);
-  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.95), transparent 78%);
+  mask-image: linear-gradient(to top, rgba(0,0,0,0.95), transparent 60%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.95), transparent 60%);
   opacity: 0.85;
   filter: drop-shadow(0 0 24px rgba(46, 230, 255, 0.35));
 }
@@ -500,7 +500,7 @@ article.glass-card:hover {
 }
 
 @media (min-width: 1024px) {
-  .hero { min-height: 90vh; }
+  .hero { min-height: 82vh; }
 }
 
 .hero::before {
@@ -568,16 +568,17 @@ article.glass-card:hover {
 .hero-side {
   display: none;
   position: absolute;
-  top: 4rem;
-  width: 200px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 190px;
   flex-direction: column;
   gap: 1.25rem;
   opacity: 0.85;
   z-index: 1;
   perspective: 1200px;
 }
-.hero-side--left { left: 0; }
-.hero-side--right { right: 0; }
+.hero-side--left { left: 2rem; }
+.hero-side--right { right: 2rem; }
 
 @media (min-width: 1024px) {
   .hero-side { display: flex; }
@@ -592,10 +593,14 @@ article.glass-card:hover {
   padding: 0.85rem;
   font-size: 0.72rem;
   box-shadow: 0 0 0 1px rgba(46, 230, 255, 0.25), 0 0 24px rgba(46, 230, 255, 0.28), 0 10px 30px rgba(0, 0, 0, 0.5);
-  transform: perspective(900px) rotateY(8deg);
+  transform: perspective(900px) rotateY(5deg);
+  transform-origin: right center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.hero-side--right .mini-panel { transform: perspective(900px) rotateY(-8deg); }
+.hero-side--right .mini-panel {
+  transform: perspective(900px) rotateY(-5deg);
+  transform-origin: left center;
+}
 .hero-side .mini-panel:hover {
   transform: perspective(900px) rotateY(0deg) translateY(-2px);
   box-shadow: 0 0 0 1px rgba(46, 230, 255, 0.45), 0 0 36px rgba(46, 230, 255, 0.4), 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -961,6 +966,9 @@ article.glass-card:hover {
 @media (min-width: 1024px) {
   .process-track { display: block; }
   .process-step { z-index: 1; }
+  /* Opaque card background so the brightened track only shows in the gaps
+     between cards, not through the translucent glass over the titles. */
+  .process-step .glass-card { background: rgba(11, 18, 32, 0.97); }
 }
 
 .process-line {
@@ -1188,7 +1196,25 @@ article.glass-card:hover {
   .wrap { padding: 0 1.1rem; }
   .section { padding: 2.75rem 0; }
   .glass-card { padding: 1.5rem; }
-  .hero { padding: 2.5rem 0 3rem; }
+  .hero { padding: 2.5rem 0 6rem; }
+
+  /* Lighter, still-glowing copper headline — the full desktop stack smears
+     at small sizes. */
+  .hero h1 .line-copper {
+    text-shadow:
+      0 0 6px rgba(255, 200, 160, 0.85),
+      0 0 18px rgba(255, 107, 26, 0.6),
+      0 0 40px rgba(255, 107, 26, 0.4);
+  }
+
+  /* Keep the grid floor from rising up under the CTAs on short viewports. */
+  .grid-floor {
+    height: 32vh;
+    min-height: 170px;
+    opacity: 0.7;
+  }
+
+  .hero::before { height: 40vh; bottom: -15%; }
 }
 
 /* Narrow phones: keep wordmark, header CTA and menu button on one line */
