@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=20260906i">
+<link rel="stylesheet" href="/css/style.css?v=20260906k">
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -54,7 +54,7 @@
   <nav class="nav" aria-label="Primary">
     <a class="brand" href="/">
       <img src="/assets/logo.svg" alt="" width="32" height="32">
-      Wired Different
+      <span class="brand-name">Wired Different</span>
     </a>
     <div class="nav-links">
       <a href="/websites">Websites</a>
@@ -68,7 +68,7 @@
       <a href="/process">Process</a>
     </div>
     <div class="nav-actions">
-      <a class="btn-primary" href="/consultation">Start a build</a>
+      <a class="btn-primary" href="/consultation"><span class="cta-full">Book a consultation</span><span class="cta-short">Book a call</span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -80,7 +80,7 @@
     <a href="/ai">AI</a>
     <a href="/work">Work</a>
     <a href="/process">Process</a>
-    <a href="/consultation">Start a build</a>
+    <a href="/consultation">Book a consultation</a>
   </div>
 </header>
 
@@ -122,42 +122,103 @@
         </div>
 
         <figure class="proof-hero">
-          <img src="/assets/proof/01-home.webp" alt="Custom CRM home screen showing daily brief and key metrics" width="1440" height="900" loading="eager">
+          <button type="button" class="screen-row__open">
+            <img src="/assets/proof/01-home.webp" alt="Custom CRM home screen showing daily brief and key metrics" width="1440" height="900" loading="eager">
+          </button>
         </figure>
       </article>
 
-      <div class="proof-gallery reveal">
-        <figure class="proof-shot">
-          <img src="/assets/proof/02-generators-pipeline.webp" alt="Pipeline board with stages and job cards" width="1440" height="900" loading="lazy">
-          <figcaption>Pipeline</figcaption>
-        </figure>
-        <figure class="proof-shot">
-          <img src="/assets/proof/03-generators-jobs.webp" alt="Jobs list with status and filters" width="1440" height="900" loading="lazy">
-          <figcaption>Jobs</figcaption>
-        </figure>
-        <figure class="proof-shot">
-          <img src="/assets/proof/04-electrical-overview.webp" alt="Division overview dashboard" width="1440" height="900" loading="lazy">
-          <figcaption>Overview</figcaption>
-        </figure>
-        <figure class="proof-shot">
-          <img src="/assets/proof/05-electrical-intake.webp" alt="Intake queue for new requests" width="1440" height="900" loading="lazy">
-          <figcaption>Intake</figcaption>
-        </figure>
-        <figure class="proof-shot">
-          <img src="/assets/proof/07-electrical-bids.webp" alt="Bids workspace with line items and status" width="1440" height="900" loading="lazy">
-          <figcaption>Bids</figcaption>
-        </figure>
-        <figure class="proof-shot">
-          <img src="/assets/proof/08-estimating.webp" alt="Estimating tools inside the CRM" width="1440" height="900" loading="lazy">
-          <figcaption>Estimating</figcaption>
-        </figure>
+      <div class="screen-rows">
+        <article class="screen-row reveal">
+          <figure class="screen-row__figure">
+            <button type="button" class="screen-row__open">
+              <img src="/assets/proof/02-generators-pipeline.webp" alt="Pipeline board with stages and job cards, from a real custom CRM" width="1440" height="900" loading="eager">
+            </button>
+          </figure>
+          <div class="screen-row__copy">
+            <h3>Pipeline</h3>
+            <p>Every bid is a card in the stage it's actually in. Drag to move it, click to open it. The stages are the shop's real process, not a vendor's default.</p>
+          </div>
+        </article>
+
+        <article class="screen-row screen-row--flip reveal">
+          <figure class="screen-row__figure">
+            <button type="button" class="screen-row__open">
+              <img src="/assets/proof/05-electrical-intake.webp" alt="Intake queue for new requests, from a real custom CRM" width="1440" height="900" loading="lazy">
+            </button>
+          </figure>
+          <div class="screen-row__copy">
+            <h3>Intake</h3>
+            <p>New requests land in a queue with the details captured up front, so nothing gets lost in an inbox.</p>
+          </div>
+        </article>
+
+        <article class="screen-row reveal">
+          <figure class="screen-row__figure">
+            <button type="button" class="screen-row__open">
+              <img src="/assets/proof/06-electrical-intake-detail.webp" alt="An open intake request with documents, dates, and contacts, from a real custom CRM" width="1440" height="900" loading="lazy">
+            </button>
+          </figure>
+          <div class="screen-row__copy">
+            <h3>Intake detail</h3>
+            <p>One request opened up: documents, dates, contacts, and the next step, all on one screen.</p>
+          </div>
+        </article>
+
+        <article class="screen-row screen-row--flip reveal">
+          <figure class="screen-row__figure">
+            <button type="button" class="screen-row__open">
+              <img src="/assets/proof/07-electrical-bids.webp" alt="Bid pipeline board by stage: due, submitted, awarded, lost, from a real custom CRM" width="1440" height="900" loading="lazy">
+            </button>
+          </figure>
+          <div class="screen-row__copy">
+            <h3>Bids</h3>
+            <p>Every bid tracked by stage — due, submitted, awarded, lost — with value, due date, and documents attached, one click from Estimating.</p>
+          </div>
+        </article>
+
+        <article class="screen-row reveal">
+          <figure class="screen-row__figure">
+            <button type="button" class="screen-row__open">
+              <img src="/assets/proof/08-estimating.webp" alt="Estimating workflow with contract value, step progress, and RFIs, from a real custom CRM" width="1440" height="900" loading="lazy">
+            </button>
+          </figure>
+          <div class="screen-row__copy">
+            <h3>Estimating</h3>
+            <p>A seven-step workflow from intake to submitted, with contract value, RFIs, and progress tracked in one place. Already have a bid built elsewhere? Import it instead of retyping.</p>
+          </div>
+        </article>
+
+        <article class="screen-row screen-row--flip reveal">
+          <figure class="screen-row__figure">
+            <button type="button" class="screen-row__open">
+              <img src="/assets/proof/03-generators-jobs.webp" alt="Won jobs tracked by install stage, from a real custom CRM" width="1440" height="900" loading="lazy">
+            </button>
+          </figure>
+          <div class="screen-row__copy">
+            <h3>Jobs</h3>
+            <p>Awarded work moves through deposit, engineering, permitting, scheduling, installation, inspection, and startup — a real board, not a Won column that goes quiet.</p>
+          </div>
+        </article>
+
+        <article class="screen-row reveal">
+          <figure class="screen-row__figure">
+            <button type="button" class="screen-row__open">
+              <img src="/assets/proof/04-electrical-overview.webp" alt="Division overview dashboard, from a real custom CRM" width="1440" height="900" loading="lazy">
+            </button>
+          </figure>
+          <div class="screen-row__copy">
+            <h3>Overview</h3>
+            <p>The division at a glance: what's out, what's won, what's due this week.</p>
+          </div>
+        </article>
       </div>
 
       <div class="work-more reveal">
         <div class="work-more__head">
-          <span class="eyebrow">Also in the shop</span>
+          <span class="eyebrow">Websites &amp; AI</span>
           <h2>Websites &amp; AI assistants</h2>
-          <p class="work-more__note">Illustrative concept mockups — the kind of custom sites and assistants we build. The CRM above is a live anonymized product.</p>
+          <p class="work-more__note">Concept mockups showing the direction for sites and assistants. A live site build for a nonprofit is in progress and will replace these when it launches. The CRM above is a real, anonymized product.</p>
         </div>
 
         <article class="glass-card card--cyan work-feature work-feature--flip">
@@ -219,9 +280,14 @@
   <div class="wrap">
     <div class="bottom-band reveal">
       <h2>Have a system in mind?</h2>
-      <a class="btn-primary" href="/consultation">Start a build</a>
+      <a class="btn-primary" href="/consultation">Book a consultation</a>
     </div>
   </div>
+
+  <dialog id="lightbox" aria-label="Screenshot preview">
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="">
+  </dialog>
 
 </main>
 
@@ -237,6 +303,6 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=20260906i"></script>
+<script src="/js/main.js?v=20260906k"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var SCHEDULE_URL = ""; // Paste a Calendly / Cal.com link here to show the "pick a time" button on /consultation.
+
   /* ---- Mobile nav toggle ---- */
   var toggle = document.querySelector(".nav-toggle");
   var mobileMenu = document.querySelector(".mobile-menu");
@@ -166,5 +168,49 @@
       );
       revealEls.forEach(function (el) { observer.observe(el); });
     }
+  }
+
+  /* ---- Screenshot lightbox (Work page) ---- */
+  var lightbox = document.getElementById("lightbox");
+
+  if (lightbox && typeof lightbox.showModal === "function") {
+    var lightboxImg = lightbox.querySelector("img");
+    var lightboxClose = lightbox.querySelector(".lightbox-close");
+    var lastOpener = null;
+
+    document.querySelectorAll(".screen-row__open").forEach(function (opener) {
+      opener.addEventListener("click", function () {
+        var img = opener.querySelector("img");
+        if (!img || !lightboxImg) return;
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt || "";
+        lastOpener = opener;
+        lightbox.showModal();
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.close();
+    }
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", closeLightbox);
+    }
+
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    lightbox.addEventListener("close", function () {
+      if (lastOpener) lastOpener.focus();
+    });
+  }
+
+  /* ---- Scheduler link (Consultation page) ---- */
+  var scheduleLink = document.getElementById("schedule-link");
+
+  if (scheduleLink && SCHEDULE_URL) {
+    scheduleLink.href = SCHEDULE_URL;
+    scheduleLink.hidden = false;
   }
 })();

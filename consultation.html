@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=20260906i">
+<link rel="stylesheet" href="/css/style.css?v=20260906k">
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -54,7 +54,7 @@
   <nav class="nav" aria-label="Primary">
     <a class="brand" href="/">
       <img src="/assets/logo.svg" alt="" width="32" height="32">
-      Wired Different
+      <span class="brand-name">Wired Different</span>
     </a>
     <div class="nav-links">
       <a href="/websites">Websites</a>
@@ -68,7 +68,7 @@
       <a href="/process">Process</a>
     </div>
     <div class="nav-actions">
-      <a class="btn-primary" href="/consultation">Start a build</a>
+      <a class="btn-primary" href="/consultation"><span class="cta-full">Book a consultation</span><span class="cta-short">Book a call</span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -80,7 +80,7 @@
     <a href="/ai">AI</a>
     <a href="/work">Work</a>
     <a href="/process">Process</a>
-    <a href="/consultation">Start a build</a>
+    <a href="/consultation">Book a consultation</a>
   </div>
 </header>
 
@@ -96,7 +96,7 @@
       <div class="consult-grid">
 
         <div class="consult-copy reveal">
-          <span class="eyebrow">Start a build</span>
+          <span class="eyebrow">Consultation</span>
           <h1>Book a consultation.</h1>
           <p class="sub-lg">Tell us what you're running. We'll map what to build.</p>
           <ul class="bullets">
@@ -104,7 +104,9 @@
             <li>Custom for how your business actually runs</li>
             <li>No package pitch — just fit</li>
           </ul>
+          <p class="tagline">You'll be talking to Jake, the person who scopes it and builds it.</p>
           <p class="tagline">Built for operators, not slide decks.</p>
+          <a id="schedule-link" class="btn-ghost" hidden href="#" target="_blank" rel="noopener">Prefer to pick a time? Open the calendar <span class="arrow">→</span></a>
         </div>
 
         <div class="glass-card card--copper consult-form-card reveal">
@@ -159,6 +161,27 @@
         </div>
 
       </div>
+
+      <div class="faq reveal">
+        <span class="eyebrow">Good to know</span>
+        <details>
+          <summary>What does a build cost?<span class="faq-chevron" aria-hidden="true"></span></summary>
+          <p>Every build is scoped after the call. You get a fixed-scope proposal with a price and a timeline before any deposit. No hourly surprises.</p>
+        </details>
+        <details>
+          <summary>How long does it take?<span class="faq-chevron" aria-hidden="true"></span></summary>
+          <p>The timeline comes with the proposal. Sites move fastest. A custom CRM is scoped in phases, so you're using working software early instead of waiting for a big reveal.</p>
+        </details>
+        <details>
+          <summary>Who does the work?<span class="faq-chevron" aria-hidden="true"></span></summary>
+          <p>Jake does. You scope it with him, you build it with him, and you can reach him during the build.</p>
+        </details>
+        <details>
+          <summary>Do I own it?<span class="faq-chevron" aria-hidden="true"></span></summary>
+          <p>Yes. Code, hosting, domain, and data are set up in your name from the start.</p>
+        </details>
+      </div>
+
     </div>
   </section>
 
@@ -176,6 +199,6 @@
   </div>
 </footer>
 
-<script src="/js/main.js?v=20260906i"></script>
+<script src="/js/main.js?v=20260906k"></script>
 </body>
 </html>
