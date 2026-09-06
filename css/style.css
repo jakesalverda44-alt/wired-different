@@ -1586,3 +1586,34 @@ article.glass-card:hover {
   .hero--takeover { padding-top: 3.25rem; }
   .hero-stage { width: calc(100% - 1.5rem); border-radius: 12px; }
 }
+
+/* Work page — websites & AI proofs */
+.work-more { margin-top: 3rem; display: grid; gap: 2rem; }
+.work-more__head { margin-bottom: 0.25rem; }
+.work-more__head h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  margin: 0.25rem 0 0.75rem;
+}
+.work-more__note {
+  color: var(--muted);
+  max-width: 40rem;
+  margin: 0;
+  font-size: 0.98rem;
+}
+.proof-pair {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+@media (min-width: 720px) {
+  .proof-pair { grid-template-columns: 1fr 1fr; }
+}
+.work-feature .proof-pair { margin-top: 0.25rem; }
+@media (min-width: 960px) {
+  .work-feature--flip {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+  }
+  .work-feature--flip .work-feature__meta { order: 2; }
+  .work-feature--flip .proof-pair { order: 1; }
+}
