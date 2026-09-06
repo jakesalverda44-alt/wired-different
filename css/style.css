@@ -286,8 +286,8 @@ p { color: var(--muted); }
 .nav-links {
   display: none;
   align-items: center;
-  gap: 0.9rem;
-  font-size: 0.95rem;
+  gap: 0.65rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 .nav-links a {
@@ -2499,4 +2499,175 @@ a.path-card:hover { transform: translateY(-6px); }
 .mock-launch .mp-check li:not(.done) .mp-bar {
   background: rgba(255,255,255,0.08);
   opacity: 0.7;
+}
+
+
+/* ==========================================================================
+   Product pages (websites / crm / ai)
+   ========================================================================== */
+
+.product-hero {
+  padding-bottom: 1.5rem;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .product-layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 2.75rem;
+  }
+}
+
+.product-copy .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.product-copy h1 {
+  font-size: clamp(2rem, 4.2vw, 3.15rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  max-width: 16ch;
+  margin: 0 0 1rem;
+}
+
+.product-copy .sub {
+  max-width: 38rem;
+  margin-bottom: 1.5rem;
+}
+
+.product-copy .hero-ctas {
+  justify-content: flex-start;
+}
+
+.product-visual .mock-panel--lg {
+  margin-top: 0;
+  font-size: 0.82rem;
+  box-shadow:
+    0 0 0 1px rgba(46, 230, 255, 0.12),
+    0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.product-visual .mock-crm--product {
+  min-height: 280px;
+}
+.product-visual .mock-crm--hero {
+  min-height: 280px;
+}
+.product-visual .mock-crm--hero .mp-crm-meta {
+  display: inline;
+}
+
+
+.product-visual .mock-chat.mock-panel--lg {
+  min-height: 280px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.product-include {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.product-include .bullets--compact {
+  columns: 1;
+}
+
+@media (min-width: 700px) {
+  .product-include .bullets--compact {
+    columns: 2;
+    column-gap: 2rem;
+  }
+  .product-include .bullets--compact li {
+    break-inside: avoid;
+  }
+}
+
+.product-process {
+  margin: 1.75rem 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.product-process a {
+  color: var(--cyan);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(46, 230, 255, 0.35);
+}
+
+.product-process a:hover {
+  border-bottom-color: var(--cyan);
+}
+
+.also-strip {
+  margin: 2.25rem auto 0;
+  max-width: 40rem;
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+  background: rgba(11, 18, 32, 0.55);
+}
+
+.also-strip__label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-bottom: 0.45rem;
+}
+
+.also-strip p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+/* Services hub */
+.hub-grid .hub-card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 1.75rem;
+}
+
+.hub-grid .hub-card .ghost-num {
+  margin-bottom: 0.5rem;
+}
+
+.hub-grid .hub-card .path-cta {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.hub-note {
+  text-align: center;
+  margin: 2rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.hub-note a {
+  color: var(--cyan);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(46, 230, 255, 0.35);
+}
+
+.hub-note a:hover {
+  border-bottom-color: var(--cyan);
 }

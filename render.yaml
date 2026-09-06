@@ -6,6 +6,15 @@ services:
     staticPublishPath: .
     routes:
       - type: rewrite
+        source: /websites
+        destination: /websites.html
+      - type: rewrite
+        source: /crm
+        destination: /crm.html
+      - type: rewrite
+        source: /ai
+        destination: /ai.html
+      - type: rewrite
         source: /services
         destination: /services.html
       - type: rewrite
@@ -23,6 +32,15 @@ services:
       - type: redirect
         source: /index.html
         destination: /
+      - type: redirect
+        source: /websites.html
+        destination: /websites
+      - type: redirect
+        source: /crm.html
+        destination: /crm
+      - type: redirect
+        source: /ai.html
+        destination: /ai
       - type: redirect
         source: /services.html
         destination: /services
