@@ -17,7 +17,37 @@ services:
       - type: rewrite
         source: /consultation
         destination: /consultation.html
+      - type: rewrite
+        source: /privacy
+        destination: /privacy.html
+      - type: redirect
+        source: /index.html
+        destination: /
+      - type: redirect
+        source: /services.html
+        destination: /services
+      - type: redirect
+        source: /work.html
+        destination: /work
+      - type: redirect
+        source: /process.html
+        destination: /process
+      - type: redirect
+        source: /consultation.html
+        destination: /consultation
+      - type: redirect
+        source: /privacy.html
+        destination: /privacy
     headers:
       - path: /*
         name: X-Frame-Options
         value: DENY
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /css/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /js/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

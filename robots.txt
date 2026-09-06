@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wired-different.onrender.com/sitemap.xml

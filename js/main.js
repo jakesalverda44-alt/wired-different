@@ -20,15 +20,20 @@
   }
 
   /* ---- Active nav link ---- */
-  var path = location.pathname.replace(/\/+$/, "") || "/";
-  var currentFile = path.split("/").pop() || "index.html";
-  if (currentFile === "") currentFile = "index.html";
+  function normalizePath(p) {
+    p = p.replace(/\/+$/, "");
+    p = p.replace(/\.html$/, "");
+    if (p === "" || p === "/index") return "/";
+    return p;
+  }
+
+  var currentPath = normalizePath(location.pathname);
 
   document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(function (link) {
     var href = link.getAttribute("href");
     if (!href) return;
-    var hrefFile = href.split("/").pop();
-    if (hrefFile === currentFile || (currentFile === "index.html" && (href === "/" || href === "index.html"))) {
+    var hrefPath = normalizePath(href);
+    if (hrefPath === currentPath) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     }
@@ -75,6 +80,7 @@
         var body = encodeURIComponent(lines.join("\n"));
         var subject = encodeURIComponent("Consultation request — Wired Different");
         window.location.href = "mailto:hello@wireddifferent.io?subject=" + subject + "&body=" + body;
+        if (window.fbq) { window.fbq('track', 'Lead'); }
         showStatus();
         return;
       }
@@ -89,6 +95,7 @@
       })
         .then(function (response) {
           if (response.ok) {
+            if (window.fbq) { window.fbq('track', 'Lead'); }
             showStatus();
             form.reset();
           } else {
