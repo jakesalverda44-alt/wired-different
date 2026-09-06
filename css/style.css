@@ -2573,9 +2573,39 @@ a.path-card:hover { transform: translateY(-6px); }
   gap: 0.55rem;
 }
 
+.product-include-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .product-include-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.product-include-layout .section-head {
+  max-width: none;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.product-include-layout .section-head h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+
+.product-include-layout .reveal {
+  opacity: 1;
+  transform: none;
+}
+
 .product-include {
-  max-width: 52rem;
-  margin: 0 auto;
+  max-width: none;
+  width: 100%;
+  margin: 0;
 }
 
 .product-include .bullets--compact {
