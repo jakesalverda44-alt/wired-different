@@ -590,15 +590,6 @@ article.glass-card:hover {
   filter: drop-shadow(0 0 8px rgba(46, 230, 255, 0.95)) drop-shadow(0 0 22px rgba(46, 230, 255, 0.65));
 }
 
-.hero-trust-micro {
-  margin: 1.15rem auto 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted-2);
-  font-weight: 600;
-}
-
 .hero-inner {
   position: relative;
   z-index: 2;
