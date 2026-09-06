@@ -167,4 +167,40 @@
       revealEls.forEach(function (el) { observer.observe(el); });
     }
   }
+
+  /* ---- Screenshot lightbox (Work page) ---- */
+  var lightbox = document.getElementById("lightbox");
+
+  if (lightbox && typeof lightbox.showModal === "function") {
+    var lightboxImg = lightbox.querySelector("img");
+    var lightboxClose = lightbox.querySelector(".lightbox-close");
+    var lastOpener = null;
+
+    document.querySelectorAll(".screen-row__open").forEach(function (opener) {
+      opener.addEventListener("click", function () {
+        var img = opener.querySelector("img");
+        if (!img || !lightboxImg) return;
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt || "";
+        lastOpener = opener;
+        lightbox.showModal();
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.close();
+    }
+
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", closeLightbox);
+    }
+
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    lightbox.addEventListener("close", function () {
+      if (lastOpener) lastOpener.focus();
+    });
+  }
 })();
