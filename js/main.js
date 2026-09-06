@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var SCHEDULE_URL = ""; // Paste a Calendly / Cal.com link here to show the "pick a time" button on /consultation.
+
   /* ---- Mobile nav toggle ---- */
   var toggle = document.querySelector(".nav-toggle");
   var mobileMenu = document.querySelector(".mobile-menu");
@@ -202,5 +204,13 @@
     lightbox.addEventListener("close", function () {
       if (lastOpener) lastOpener.focus();
     });
+  }
+
+  /* ---- Scheduler link (Consultation page) ---- */
+  var scheduleLink = document.getElementById("schedule-link");
+
+  if (scheduleLink && SCHEDULE_URL) {
+    scheduleLink.href = SCHEDULE_URL;
+    scheduleLink.hidden = false;
   }
 })();

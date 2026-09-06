@@ -2813,3 +2813,68 @@ a.path-card:hover { transform: translateY(-6px); }
   color: #7DF3FF;
   border-color: #7DF3FF;
 }
+
+.faq {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-soft);
+  max-width: 46rem;
+}
+
+.faq details {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.faq details[open] {
+  border-color: rgba(46, 230, 255, 0.4);
+}
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.35rem;
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-chevron {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.faq details[open] .faq-chevron {
+  transform: rotate(-135deg);
+}
+
+.faq details p {
+  margin: 0;
+  padding: 0 1.35rem 1.25rem;
+  color: var(--muted);
+}
+
+#schedule-link {
+  margin-top: 1.1rem;
+}
+
+#schedule-link[hidden] {
+  display: none;
+}
