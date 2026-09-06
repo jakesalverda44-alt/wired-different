@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Wired Different">
+  <defs>
+    <linearGradient id="wdW" x1="22" y1="30" x2="48" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2EE6FF"/>
+      <stop offset="1" stop-color="#B8F4FF"/>
+    </linearGradient>
+    <linearGradient id="wdD" x1="48" y1="28" x2="78" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFB27A"/>
+      <stop offset="1" stop-color="#FF6B1A"/>
+    </linearGradient>
+  </defs>
+  <polygon points="50,6 90,28 90,72 50,94 10,72 10,28" fill="none" stroke="#2EE6FF" stroke-width="1.4" opacity="0.9"/>
+  <polygon points="50,14 82,32 82,68 50,86 18,68 18,32" fill="none" stroke="#2EE6FF" stroke-width="1" stroke-dasharray="3 3.5" opacity="0.55"/>
+  <polygon points="50,22 74,36 74,64 50,78 26,64 26,36" fill="#0A0E17" stroke="#2EE6FF" stroke-width="1.6"/>
+  <g stroke="#2EE6FF" stroke-width="1" opacity="0.7">
+    <line x1="50" y1="6" x2="50" y2="12"/>
+    <line x1="90" y1="28" x2="84" y2="31.5"/>
+    <line x1="90" y1="72" x2="84" y2="68.5"/>
+    <line x1="50" y1="94" x2="50" y2="88"/>
+    <line x1="10" y1="72" x2="16" y2="68.5"/>
+    <line x1="10" y1="28" x2="16" y2="31.5"/>
+  </g>
+  <g fill="#2EE6FF">
+    <circle cx="50" cy="6" r="2.2"/>
+    <circle cx="90" cy="28" r="2"/>
+    <circle cx="10" cy="28" r="2"/>
+    <circle cx="10" cy="72" r="2"/>
+    <circle cx="90" cy="72" r="2"/>
+  </g>
+  <g fill="#FF6B1A">
+    <circle cx="50" cy="94" r="2.4"/>
+    <circle cx="82" cy="50" r="2"/>
+    <circle cx="18" cy="50" r="2"/>
+  </g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M30 34 L36 66 L42 46 L48 66 L50 58" stroke="url(#wdW)" stroke-width="5.2"/>
+    <path d="M48 34 L48 66" stroke="url(#wdD)" stroke-width="5.2"/>
+    <path d="M48 34 C66 34 74 42 74 50 C74 58 66 66 48 66" stroke="url(#wdD)" stroke-width="5.2"/>
+  </g>
+</svg>
