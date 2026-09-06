@@ -1628,3 +1628,44 @@ article.glass-card:hover {
 .legal-card ul { padding-left: 1.25rem; margin: 0.25rem 0 0.75rem; }
 .legal-card li { margin-bottom: 0.4rem; }
 .legal-card a { color: var(--cyan); }
+
+/* ---- Services pillars (also in a build) ---- */
+.section-head--pillars {
+  margin-top: 3.5rem;
+  margin-bottom: 1.75rem;
+}
+.section-head--pillars h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0.35rem 0 0.75rem;
+}
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.pillar-card .card-title {
+  font-size: 1.35rem;
+}
+.bullets--compact {
+  margin-bottom: 1rem;
+  gap: 0.4rem;
+}
+.bullets--compact li {
+  font-size: 0.92rem;
+}
+.pillar-tagline {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 0.01em;
+}
+.card--copper .pillar-tagline { color: var(--copper); }
+.card--violet .pillar-tagline { color: var(--violet); }
+.card--green .pillar-tagline { color: var(--green); }
+
