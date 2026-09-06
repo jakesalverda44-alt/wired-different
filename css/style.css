@@ -2701,3 +2701,53 @@ a.path-card:hover { transform: translateY(-6px); }
 .hub-note a:hover {
   border-bottom-color: var(--cyan);
 }
+
+/* === Round 1 (2026-09-06) === */
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.1rem 0 1.4rem;
+}
+
+.about-block {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+  padding: 1.75rem;
+}
+
+@media (min-width: 760px) {
+  .about-block {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 2.25rem;
+  }
+}
+
+.about-block__avatar {
+  display: flex;
+  justify-content: center;
+}
+
+.about-block__mono {
+  width: 160px;
+  height: 160px;
+  filter: drop-shadow(0 0 24px rgba(46, 230, 255, 0.25));
+}
+
+@media (min-width: 760px) {
+  .about-block__mono { width: 200px; height: 200px; }
+}
+
+.about-block__copy h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  margin: 0.35rem 0 0.9rem;
+}
+
+.about-block__copy p {
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+  max-width: 42rem;
+}
