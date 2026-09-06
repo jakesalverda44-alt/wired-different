@@ -115,6 +115,36 @@
     }
   }
 
+
+  /* ---- Services pillar tabs ---- */
+  var pillarTabs = document.querySelectorAll(".pillar-tab");
+  var pillarPanels = document.querySelectorAll(".pillar-panel");
+
+  if (pillarTabs.length && pillarPanels.length) {
+    pillarTabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var target = tab.getAttribute("data-tab");
+        if (!target) return;
+
+        pillarTabs.forEach(function (t) {
+          var selected = t === tab;
+          t.classList.toggle("is-active", selected);
+          t.setAttribute("aria-selected", selected ? "true" : "false");
+        });
+
+        pillarPanels.forEach(function (panel) {
+          var match = panel.getAttribute("data-tab") === target;
+          panel.classList.toggle("is-active", match);
+          if (match) {
+            panel.removeAttribute("hidden");
+          } else {
+            panel.setAttribute("hidden", "");
+          }
+        });
+      });
+    });
+  }
+
   /* ---- Reveal on scroll ---- */
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealEls = document.querySelectorAll(".reveal");

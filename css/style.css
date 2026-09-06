@@ -1629,7 +1629,66 @@ article.glass-card:hover {
 .legal-card li { margin-bottom: 0.4rem; }
 .legal-card a { color: var(--cyan); }
 
-/* ---- Services pillars (also in a build) ---- */
+/* ---- Services starter paths ---- */
+.section-head--paths {
+  margin-top: 3.5rem;
+  margin-bottom: 1.75rem;
+}
+.section-head--paths h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0.35rem 0 0.75rem;
+}
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 768px) {
+  .paths-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.path-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.6rem 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.path-card .card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.45rem;
+}
+.path-card .card-desc {
+  flex: 1;
+  margin-bottom: 1.1rem;
+  font-size: 0.95rem;
+}
+.path-card .path-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-shadow: 0 0 12px rgba(46, 230, 255, 0.4);
+  transition: gap 0.15s ease;
+}
+.path-card.card--copper .path-cta { color: var(--copper); text-shadow: 0 0 12px rgba(255, 107, 26, 0.4); }
+.path-card.card--violet .path-cta { color: var(--violet); text-shadow: 0 0 12px rgba(168, 85, 247, 0.4); }
+.path-card:hover .path-cta { gap: 0.55rem; }
+.path-card .arrow { transition: transform 0.15s ease; }
+.path-card:hover .arrow { transform: translateX(2px); }
+a.path-card:hover { transform: translateY(-6px); }
+.paths-note {
+  margin: 1.1rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted-2);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Services pillars (tabbed) ---- */
 .section-head--pillars {
   margin-top: 3.5rem;
   margin-bottom: 1.75rem;
@@ -1640,15 +1699,47 @@ article.glass-card:hover {
   letter-spacing: -0.02em;
   margin: 0.35rem 0 0.75rem;
 }
-.pillars-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+.pillar-tabs {
+  display: flex;
+  flex-direction: column;
   gap: 1.25rem;
 }
-@media (min-width: 768px) {
-  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+.pillar-tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
 }
-.pillar-card .card-title {
+.pillar-tab {
+  appearance: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+.pillar-tab:hover {
+  color: var(--text);
+  border-color: rgba(46, 230, 255, 0.45);
+}
+.pillar-tab.is-active {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  background: rgba(46, 230, 255, 0.1);
+  box-shadow: 0 0 16px rgba(46, 230, 255, 0.28);
+}
+.pillar-panels {
+  position: relative;
+}
+.pillar-panel {
+  display: none;
+}
+.pillar-panel.is-active {
+  display: block;
+}
+.pillar-panel .card-title {
   font-size: 1.35rem;
 }
 .bullets--compact {
@@ -1668,4 +1759,49 @@ article.glass-card:hover {
 .card--copper .pillar-tagline { color: var(--copper); }
 .card--violet .pillar-tagline { color: var(--violet); }
 .card--green .pillar-tagline { color: var(--green); }
+
+/* ---- Louder consult band (services) ---- */
+.consult-band {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  padding: 3.5rem 1.75rem;
+  margin: 1rem 0 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 107, 26, 0.55);
+  background: rgba(11, 18, 32, 0.72);
+  box-shadow:
+    0 0 0 1px rgba(255, 107, 26, 0.2),
+    0 0 40px rgba(255, 107, 26, 0.28),
+    0 0 90px rgba(46, 230, 255, 0.12),
+    0 20px 60px rgba(0, 0, 0, 0.45);
+}
+.consult-band .eyebrow {
+  margin-bottom: 0.25rem;
+}
+.consult-band h2 {
+  font-size: clamp(1.55rem, 3.4vw, 2.35rem);
+  font-weight: 800;
+  max-width: 22ch;
+  line-height: 1.15;
+}
+.consult-band > p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 36rem;
+  margin: 0;
+}
+.consult-band-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  margin-top: 0.75rem;
+}
+@media (max-width: 640px) {
+  .consult-band { padding: 2.5rem 1.25rem; }
+}
 
