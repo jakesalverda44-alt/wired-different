@@ -112,6 +112,15 @@
     function showStatus(message) {
       if (!statusBox) return;
       statusBox.textContent = message || "Thanks — we'll be in touch.";
+      if (!message && SCHEDULE_URL) {
+        statusBox.appendChild(document.createTextNode(" Want to lock in a time now? "));
+        var pick = document.createElement("a");
+        pick.href = SCHEDULE_URL;
+        pick.target = "_blank";
+        pick.rel = "noopener";
+        pick.textContent = "Open the calendar";
+        statusBox.appendChild(pick);
+      }
       statusBox.hidden = false;
       statusBox.setAttribute("role", "status");
     }
@@ -206,11 +215,38 @@
     });
   }
 
-  /* ---- Scheduler link (Consultation page) ---- */
+  /* ---- Scheduler (Consultation page) ---- */
+  var scheduleBlock = document.getElementById("schedule-block");
   var scheduleLink = document.getElementById("schedule-link");
+  var scheduleEmbed = document.getElementById("schedule-embed");
 
-  if (scheduleLink && SCHEDULE_URL) {
+  if (scheduleBlock && scheduleLink && SCHEDULE_URL) {
     scheduleLink.href = SCHEDULE_URL;
-    scheduleLink.hidden = false;
+    scheduleBlock.hidden = false;
+
+    if (scheduleEmbed && /calendly\.com/.test(SCHEDULE_URL)) {
+      // Inline Calendly widget, themed to the site. Fires a Meta "Schedule" event on booking.
+      var joiner = SCHEDULE_URL.indexOf("?") > -1 ? "&" : "?";
+      var themed = SCHEDULE_URL + joiner + "hide_gdpr_banner=1&background_color=0b1220&text_color=f2f5fa&primary_color=ff6b1a";
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(css);
+      var js = document.createElement("script");
+      js.src = "https://assets.calendly.com/assets/external/widget.js";
+      js.async = true;
+      js.onload = function () {
+        if (window.Calendly) {
+          window.Calendly.initInlineWidget({ url: themed, parentElement: scheduleEmbed });
+        }
+      };
+      document.head.appendChild(js);
+      window.addEventListener("message", function (event) {
+        if (event.origin !== "https://calendly.com" || !event.data) return;
+        if (event.data.event === "calendly.event_scheduled" && window.fbq) {
+          window.fbq("track", "Schedule");
+        }
+      });
+    }
   }
 })();

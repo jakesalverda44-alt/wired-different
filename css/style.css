@@ -2905,3 +2905,19 @@ a.path-card:hover { transform: translateY(-6px); }
   }
   .faq > .eyebrow { grid-column: 1 / -1; }
 }
+
+/* Scheduler block on /consultation (shown only when SCHEDULE_URL is set) */
+.schedule-block { margin-top: 2rem; }
+.schedule-block__note { color: var(--muted); margin: 0.5rem 0 1rem; }
+.schedule-embed {
+  height: 700px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--panel-solid);
+  box-shadow: 0 0 0 1px rgba(46, 230, 255, 0.08), 0 12px 36px rgba(0, 0, 0, 0.4);
+  margin-bottom: 1rem;
+}
+.schedule-embed .calendly-inline-widget,
+.schedule-embed iframe { width: 100%; height: 100%; min-width: 0; }
+.schedule-block:not([hidden]) + .tagline { margin-top: 1.5rem; }
