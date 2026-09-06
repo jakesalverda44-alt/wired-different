@@ -468,7 +468,33 @@ article.glass-card:hover {
 
 .card-desc { color: var(--muted); margin-bottom: 1rem; }
 
-.bullets { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.bullets { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.85rem; }
+
+.card-micro {
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted-2);
+  letter-spacing: 0.01em;
+}
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-shadow: 0 0 12px rgba(46, 230, 255, 0.4);
+  transition: gap 0.15s ease;
+}
+.card--copper .card-cta { color: var(--copper); text-shadow: 0 0 12px rgba(255, 107, 26, 0.4); }
+.card--violet .card-cta { color: var(--violet); text-shadow: 0 0 12px rgba(168, 85, 247, 0.4); }
+.card-cta:hover { gap: 0.55rem; }
+.card-cta .arrow { transition: transform 0.15s ease; }
+.card-cta:hover .arrow { transform: translateX(2px); }
+.peek-card .card-cta { margin-top: 1rem; }
+.peek-card .mock-panel { margin-top: 0.25rem; }
 .bullets li {
   color: var(--muted);
   font-size: 0.92rem;
@@ -777,41 +803,162 @@ article.glass-card:hover {
 .mock-panel .mp-body { padding: 0.85rem; }
 
 /* Website-style mock (services #1) */
+.mock-website .mp-url {
+  font-size: 0.62rem;
+  color: var(--muted-2);
+  letter-spacing: 0.02em;
+}
+.mock-website .mp-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-bottom: 1px solid var(--border-soft);
+  background: rgba(12, 20, 32, 0.85);
+  color: var(--muted-2);
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.mock-website .mp-body { padding: 0.7rem; }
 .mock-website .mp-hero {
-  background: linear-gradient(135deg, rgba(46,230,255,0.12), rgba(46,230,255,0.02));
+  background: linear-gradient(135deg, rgba(46,230,255,0.14), rgba(46,230,255,0.02));
   border: 1px solid var(--border-soft);
   border-radius: 6px;
-  padding: 0.8rem;
-  margin-bottom: 0.7rem;
+  padding: 0.7rem;
+  margin-bottom: 0.55rem;
 }
-.mock-website .mp-hero .mp-line { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.18); margin-bottom: 0.4rem; width: 70%; }
-.mock-website .mp-hero .mp-line.short { width: 45%; background: rgba(255,255,255,0.1); }
+.mock-website .mp-hero .mp-line { height: 7px; border-radius: 4px; background: rgba(255,255,255,0.2); margin-bottom: 0.35rem; width: 72%; }
+.mock-website .mp-hero .mp-line.short { width: 48%; background: rgba(255,255,255,0.1); }
+.mock-website .mp-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
 .mock-website .mp-btn {
   display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.28rem 0.65rem;
   border-radius: 4px;
   background: var(--cyan);
   color: #05070C;
   font-weight: 700;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
 }
-.mock-website .mp-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
-.mock-website .mp-tile { background: rgba(255,255,255,0.04); border: 1px solid var(--border-soft); border-radius: 4px; height: 34px; }
+.mock-website .mp-btn--ghost {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid rgba(46, 230, 255, 0.45);
+  font-weight: 600;
+}
+.mock-website .mp-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem; }
+.mock-website .mp-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  min-height: 32px;
+}
+.mock-website .mp-tile-label {
+  font-size: 0.55rem;
+  color: var(--muted-2);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 /* CRM-style mock (services #2) */
-.mock-crm { display: flex; }
+.mock-crm { display: flex; min-height: 168px; }
 .mock-crm .mp-sidebar {
-  width: 30%;
+  width: 26%;
   border-right: 1px solid var(--border-soft);
-  padding: 0.6rem 0.5rem;
-  display: flex; flex-direction: column; gap: 0.4rem;
+  padding: 0.55rem 0.45rem;
+  display: flex; flex-direction: column; gap: 0.35rem;
 }
 .mock-crm .mp-sidebar .mp-item {
-  height: 8px; border-radius: 3px; background: rgba(255,255,255,0.08); width: 100%;
+  height: 7px; border-radius: 3px; background: rgba(255,255,255,0.08); width: 100%;
 }
-.mock-crm .mp-sidebar .mp-item.active { background: var(--copper); opacity: 0.7; }
-.mock-crm .mp-main { flex: 1; padding: 0.6rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.mock-crm .mp-sidebar .mp-item.active { background: var(--copper); opacity: 0.75; }
+.mock-crm .mp-main { flex: 1; padding: 0.5rem 0.55rem 0.55rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.mock-crm .mp-crm-head {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.1rem;
+}
+.mock-crm .mp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  min-height: 18px;
+  padding: 0.2rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.mock-crm .mp-name {
+  display: block;
+  height: 6px;
+  width: 58%;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.14);
+}
+.mock-crm .mp-name--short { width: 42%; }
+.mock-crm .mp-name--mid { width: 50%; }
+.mock-crm .mp-tag {
+  flex-shrink: 0;
+  font-size: 0.52rem;
+  padding: 0.08rem 0.35rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.mock-crm .mp-tag--open {
+  background: rgba(46,230,255,0.18);
+  color: var(--cyan);
+}
+.mock-crm .mp-tag--won {
+  background: rgba(255,107,26,0.22);
+  color: var(--copper);
+}
+.mock-crm .mp-tag--follow {
+  background: rgba(46,230,255,0.12);
+  color: #7ad8ea;
+  border: 1px solid rgba(46,230,255,0.25);
+}
+.mock-crm .mp-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.3rem;
+  margin-top: 0.15rem;
+}
+.mock-crm .mp-col {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 0.25rem;
+  min-height: 34px;
+}
+.mock-crm .mp-col-head {
+  display: block;
+  font-size: 0.5rem;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+.mock-crm .mp-col-card {
+  display: block;
+  height: 14px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,107,26,0.2);
+}
+/* legacy line+tag used elsewhere */
 .mock-crm .mp-line { height: 9px; border-radius: 3px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: flex-end; padding-right: 0.3rem; }
 .mock-crm .mp-line .mp-tag {
   font-size: 0.55rem; padding: 0 0.3rem; border-radius: 999px;
@@ -819,13 +966,21 @@ article.glass-card:hover {
 }
 
 /* AI chat mock (services #3) */
-.mock-chat { display: flex; flex-direction: column; gap: 0.5rem; }
+.mock-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.7rem;
+  min-height: 168px;
+}
 .mock-chat .bubble {
-  max-width: 78%;
-  padding: 0.5rem 0.65rem;
+  max-width: 82%;
+  padding: 0.4rem 0.55rem;
   border-radius: 10px;
   background: rgba(255,255,255,0.05);
   color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.35;
 }
 .mock-chat .bubble.me {
   align-self: flex-end;
@@ -833,9 +988,21 @@ article.glass-card:hover {
   color: #E9D8FF;
 }
 .mock-chat .bubble.them { align-self: flex-start; }
-.mock-chat .typing { display: flex; gap: 3px; padding: 0.4rem 0.65rem; }
+.mock-chat .typing { display: flex; gap: 3px; padding: 0.15rem 0.1rem; }
 .mock-chat .typing span {
   width: 5px; height: 5px; border-radius: 50%; background: var(--violet); opacity: 0.6;
+}
+.mock-chat .mp-suggest {
+  align-self: flex-start;
+  margin-top: 0.1rem;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  background: rgba(168, 85, 247, 0.14);
+  color: #E9D8FF;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .bottom-band {
