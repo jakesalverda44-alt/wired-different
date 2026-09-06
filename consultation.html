@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultation — Wired Different</title>
+<meta name="description" content="Book a consultation. Tell us what you're running — we'll map what to build. No package pitch, just fit.">
+<meta property="og:title" content="Consultation — Wired Different">
+<meta property="og:description" content="Tell us what you're running. We'll map what to build.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="bg-scene" aria-hidden="true">
+  <div class="stars"></div>
+  <div class="glow-cyan"></div>
+  <div class="glow-copper"></div>
+</div>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.svg" alt="" width="32" height="32">
+      Wired Different
+    </a>
+    <div class="nav-links">
+      <a href="services.html">Services</a>
+      <span class="dot" aria-hidden="true">·</span>
+      <a href="work.html">Work</a>
+      <span class="dot" aria-hidden="true">·</span>
+      <a href="process.html">Process</a>
+    </div>
+    <div class="nav-actions">
+      <a class="btn-primary" href="consultation.html">Start a build</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="services.html">Services</a>
+    <a href="work.html">Work</a>
+    <a href="process.html">Process</a>
+    <a href="consultation.html">Start a build</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section frame">
+    <span class="corner corner--tl" aria-hidden="true"></span>
+    <span class="corner corner--tr" aria-hidden="true"></span>
+    <span class="corner corner--bl" aria-hidden="true"></span>
+    <span class="corner corner--br" aria-hidden="true"></span>
+
+    <div class="wrap">
+      <div class="consult-grid">
+
+        <div class="consult-copy reveal">
+          <span class="eyebrow">Start a build</span>
+          <h1>Book a consultation.</h1>
+          <p class="sub-lg">Tell us what you're running. We'll map what to build.</p>
+          <ul class="bullets">
+            <li>30-minute consultation</li>
+            <li>Custom for how your business actually runs</li>
+            <li>No package pitch — just fit</li>
+          </ul>
+          <p class="tagline">Built for operators, not slide decks.</p>
+        </div>
+
+        <div class="glass-card card--copper consult-form-card reveal">
+          <h2>Request a consultation</h2>
+
+          <form id="consultation-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required autocomplete="name">
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@company.com">
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(555) 000-0000">
+            </div>
+
+            <div class="field">
+              <label for="company">Business / company</label>
+              <input type="text" id="company" name="company" autocomplete="organization">
+            </div>
+
+            <div class="field">
+              <label id="needs-label">What you need</label>
+              <div class="chip-group" role="group" aria-labelledby="needs-label">
+                <button type="button" class="chip" aria-pressed="false" data-value="Website">Website</button>
+                <button type="button" class="chip" aria-pressed="false" data-value="Custom CRM">Custom CRM</button>
+                <button type="button" class="chip" aria-pressed="false" data-value="AI Assistant">AI Assistant</button>
+                <button type="button" class="chip" aria-pressed="false" data-value="Not sure yet">Not sure yet</button>
+              </div>
+              <input type="hidden" id="needs" name="needs" value="">
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="What's broken or missing today?"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary form-submit">Book a consultation</button>
+
+            <p class="no-obligation">No obligation.</p>
+            <p class="no-obligation-sub">We'll reply within one business day.</p>
+
+            <p class="form-status" id="form-status" hidden></p>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="index.html">wireddifferent.io</a>
+      <a href="mailto:hello@wireddifferent.io">hello@wireddifferent.io</a>
+    </div>
+    <p class="copyright">© 2026 Wired Different</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

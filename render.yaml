@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: wired-different
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /services
+        destination: /services.html
+      - type: rewrite
+        source: /work
+        destination: /work.html
+      - type: rewrite
+        source: /process
+        destination: /process.html
+      - type: rewrite
+        source: /consultation
+        destination: /consultation.html
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY

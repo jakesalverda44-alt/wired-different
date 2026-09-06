@@ -1,0 +1,14 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wired Different logo">
+  <defs>
+    <linearGradient id="wd-logo-a" x1="2" y1="8" x2="20" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2EE6FF"/>
+      <stop offset="1" stop-color="#0B7A99"/>
+    </linearGradient>
+    <linearGradient id="wd-logo-b" x1="20" y1="8" x2="38" y2="34" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFB27A"/>
+      <stop offset="1" stop-color="#FF6B1A"/>
+    </linearGradient>
+  </defs>
+  <path d="M3 7 L13 33 L20 15" stroke="url(#wd-logo-a)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M20 15 L27 33 L37 7" stroke="url(#wd-logo-b)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
