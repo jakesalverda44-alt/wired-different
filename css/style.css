@@ -2779,6 +2779,26 @@ a.path-card:hover { transform: translateY(-6px); }
   margin: 0;
   background: none;
   cursor: zoom-in;
+  position: relative;
+}
+
+/* Touch devices have no zoom cursor: show a small "tap to enlarge" pill */
+@media (hover: none), (max-width: 900px) {
+  .screen-row__open::after {
+    content: "Tap to enlarge \2922";
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(46, 230, 255, 0.45);
+    background: rgba(5, 7, 12, 0.85);
+    color: var(--cyan);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+  }
 }
 
 .screen-row__open img,
@@ -2808,6 +2828,12 @@ a.path-card:hover { transform: translateY(-6px); }
   background: #05070C;
   box-shadow: 0 0 0 1px rgba(46, 230, 255, 0.15), 0 30px 80px rgba(0,0,0,0.7), 0 0 60px rgba(46, 230, 255, 0.15);
   max-width: min(96vw, 1600px);
+}
+
+/* Phones: leave room for the overhanging close button so it isn't clipped */
+@media (max-width: 640px) {
+  #lightbox { max-width: calc(100vw - 2.4rem); padding: 0.45rem; }
+  #lightbox img { max-width: calc(100vw - 3.3rem); }
 }
 
 #lightbox::backdrop {

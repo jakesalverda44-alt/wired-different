@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var SCHEDULE_URL = "https://calendly.com/wir3ddifferent/30min"; // Paste a Calendly / Cal.com link here to show the "pick a time" button on /consultation.
+  var SCHEDULE_URL = ""; // 2026-09-07: calendly.com/wir3ddifferent/30min was deleted on Calendly (embed showed "URL is not valid"); paste the new event link here. // Paste a Calendly / Cal.com link here to show the "pick a time" button on /consultation.
 
   /* ---- Mobile nav toggle ---- */
   var toggle = document.querySelector(".nav-toggle");
