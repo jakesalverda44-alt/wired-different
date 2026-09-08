@@ -83,6 +83,7 @@
         var subject = encodeURIComponent("Consultation request — Wired Different");
         window.location.href = "mailto:hello@wireddifferent.io?subject=" + subject + "&body=" + body;
         if (window.fbq) { window.fbq('track', 'Lead'); }
+        if (window.gtag) { window.gtag('event', 'generate_lead'); }
         showStatus();
         return;
       }
@@ -98,6 +99,7 @@
         .then(function (response) {
           if (response.ok) {
             if (window.fbq) { window.fbq('track', 'Lead'); }
+        if (window.gtag) { window.gtag('event', 'generate_lead'); }
             showStatus();
             form.reset();
           } else {
@@ -245,6 +247,7 @@
         if (event.origin !== "https://calendly.com" || !event.data) return;
         if (event.data.event === "calendly.event_scheduled" && window.fbq) {
           window.fbq("track", "Schedule");
+          if (window.gtag) { window.gtag("event", "schedule"); }
         }
       });
     }
