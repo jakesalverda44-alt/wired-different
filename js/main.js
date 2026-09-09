@@ -81,7 +81,7 @@
         });
         var body = encodeURIComponent(lines.join("\n"));
         var subject = encodeURIComponent("Consultation request — Wired Different");
-        window.location.href = "mailto:hello@wireddifferent.io?subject=" + subject + "&body=" + body;
+        window.location.href = "mailto:wir3ddifferent@gmail.com?subject=" + subject + "&body=" + body;
         if (window.fbq) { window.fbq('track', 'Lead'); }
         if (window.gtag) { window.gtag('event', 'generate_lead'); }
         showStatus();
@@ -103,11 +103,11 @@
             showStatus();
             form.reset();
           } else {
-            showStatus("Something went wrong. Please email hello@wireddifferent.io directly.");
+            showStatus("Something went wrong. Please email wir3ddifferent@gmail.com directly.");
           }
         })
         .catch(function () {
-          showStatus("Something went wrong. Please email hello@wireddifferent.io directly.");
+          showStatus("Something went wrong. Please email wir3ddifferent@gmail.com directly.");
         });
     });
 
@@ -253,3 +253,15 @@
     }
   }
 })();
+
+  /* Hide floating consult CTA when the form is on screen */
+  var stickyCta = document.querySelector(".consult-sticky");
+  var bookCard = document.getElementById("book");
+  if (stickyCta && bookCard && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        stickyCta.classList.toggle("is-hidden", entry.isIntersecting);
+      });
+    }, { threshold: 0.35 });
+    io.observe(bookCard);
+  }
