@@ -3345,3 +3345,6 @@ a.path-card:hover { transform: translateY(-6px); }
 }
 .pricing-pointer a { color: var(--cyan); font-weight: 700; }
 .pricing-pointer a:hover { color: #7DF3FF; }
+
+/* Long unbreakable URLs in prose (privacy policy) must not push the page wide. */
+.legal-card a, .legal-card p, .legal-card li { overflow-wrap: anywhere; }
