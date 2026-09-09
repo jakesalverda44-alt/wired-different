@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Consultation — Wired Different</title>
-<meta name="description" content="Free 30-minute consultation. Your business isn't a template — we'll map a custom website, CRM, or AI around how you actually operate. No obligation.">
+<title>Book a Free 30-Minute Consult | Wired Different</title>
+<meta name="description" content="Book a free 30-minute consult with Jake. You leave with a build map for a custom website, CRM, or AI assistant — and a fixed-scope proposal before any deposit. No pitch deck, no obligation.">
 <meta property="og:title" content="Consultation — Wired Different">
 <meta property="og:description" content="Free 30-minute consult. Custom systems for operators. No obligation.">
 <meta property="og:type" content="website">
@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=20260909a">
+<link rel="stylesheet" href="/css/style.css?v=20260909b">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M8B3QYP04T"></script>
     <script>
@@ -48,6 +48,42 @@
     src="https://www.facebook.com/tr?id=1639305264385092&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does a custom website, CRM, or AI build cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Every build is scoped after a free 30-minute call, and you get a fixed-scope proposal with one price and one timeline before any deposit. There is no hourly billing and no surprise invoicing. Scope changes are priced and approved before they are built." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a build take?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The timeline comes with the proposal. Websites move fastest. A custom CRM is scoped in phases so you are using working software early rather than waiting for one big reveal." }
+    },
+    {
+      "@type": "Question",
+      "name": "Who actually does the work?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Jake does all of it. There is no account manager and no subcontracting. You scope it with him, he builds it, and you can reach him directly during the build." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I own the website, CRM, and data?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The code, hosting account, domain, and data are set up in your name from day one, not transferred later. There is no per-seat licensing and no monthly fee to keep using what you paid for." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens on the free consultation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Thirty minutes mapping how your business actually runs — workflows, handoffs, and where work falls through. You leave with a build map of what to fix first, whether or not you hire Wired Different." }
+    }
+  ]
+}
+</script>
+<script>/* Reveal-on-scroll is progressive: if JS never runs, content stays visible. */
+document.documentElement.classList.add("js-reveal");
+setTimeout(function(){if(!window.__wdReady){document.documentElement.classList.remove("js-reveal");}},2500);</script>
 </head>
 <body class="page-consult">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -76,7 +112,8 @@
       <a href="/process">Process</a>
     </div>
     <div class="nav-actions">
-      <a class="btn-primary" href="#book"><span class="cta-full">Book free consult</span><span class="cta-short">Book</span></a>
+      <a class="nav-tel" href="#" hidden>Call</a>
+      <a class="btn-primary" href="#book"><span class="cta-full">Book a free consult</span><span class="cta-short">Book</span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -88,7 +125,9 @@
     <a href="/ai">AI</a>
     <a href="/work">Work</a>
     <a href="/process">Process</a>
-    <a href="/consultation">Book a consultation</a>
+    <a href="/services">All services</a>
+    <a class="mobile-menu__tel" href="#" hidden>Call Jake</a>
+    <a href="/consultation">Book a free consult</a>
   </div>
 </header>
 
@@ -109,6 +148,9 @@
           <p class="form-sub">Tell us what you need. Jake replies within one business day.</p>
 
           <form id="consultation-form" action="https://formspree.io/f/mnpqbpgo" method="POST">
+
+            <input type="hidden" name="_subject" value="New consult request — Wired Different">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
             <div class="field">
               <label for="name">Name</label>
@@ -153,7 +195,7 @@
               </div>
             </details>
 
-            <button type="submit" class="btn-primary form-submit">Book a free consultation</button>
+            <button type="submit" class="btn-primary form-submit">Book my free consult</button>
 
             <ul class="form-trust">
               <li>No pitch deck</li>
@@ -193,11 +235,40 @@
         <a id="schedule-link" class="btn-ghost" href="#" target="_blank" rel="noopener">Open the calendar in a new tab <span class="arrow">→</span></a>
       </div>
 
+
+      <div class="pricing-block reveal" id="pricing">
+        <span class="eyebrow">How pricing works</span>
+        <h2>No hourly billing. No surprise invoices.</h2>
+        <p>You should not have to book a call to understand how you will be charged. Here is the whole arrangement, before you talk to anyone.</p>
+        <div class="pricing-grid">
+          <div class="pricing-grid__item">
+            <h3>Step 1 — the call</h3>
+            <p>Thirty minutes, free. We map how your business actually runs and what is costing you the most. You leave with a build map whether or not you hire me.</p>
+          </div>
+          <div class="pricing-grid__item">
+            <h3>Step 2 — the proposal</h3>
+            <p>A fixed scope with one price and one timeline, in writing. You approve it before any money moves. Nothing starts on a handshake and a guess.</p>
+          </div>
+          <div class="pricing-grid__item">
+            <h3>Step 3 — the build</h3>
+            <p>A deposit starts it, the balance is tied to agreed milestones. Scope changes get their own price and your approval first.</p>
+          </div>
+          <div class="pricing-grid__item">
+            <h3>What you keep</h3>
+            <p>Code, hosting, domain, and data in your name. No per-seat licensing, no monthly fee to keep using what you paid for.</p>
+          </div>
+        </div>
+        <div class="price-floor" id="price-floor" hidden>
+          <div class="price-floor__row"></div>
+          <p class="price-floor__note">Typical starting points. Your proposal is scoped to what you actually need — these are floors, not packages.</p>
+        </div>
+      </div>
+
       <div class="faq reveal">
         <span class="eyebrow">Good to know</span>
         <details>
           <summary>What does a build cost?<span class="faq-chevron" aria-hidden="true"></span></summary>
-          <p>Every build is scoped after the call. You get a fixed-scope proposal with a price and a timeline before any deposit. No hourly surprises.</p>
+          <p>Every build is scoped after the call, and you get a fixed-scope proposal — one price, one timeline — before any deposit. No hourly billing and no surprise invoices. If the scope changes later, you approve the change and its price before I build it. If what you need does not justify the spend, I will tell you on the call rather than sell you a project.</p>
         </details>
         <details>
           <summary>How long does it take?<span class="faq-chevron" aria-hidden="true"></span></summary>
@@ -205,11 +276,11 @@
         </details>
         <details>
           <summary>Who does the work?<span class="faq-chevron" aria-hidden="true"></span></summary>
-          <p>Jake does. You scope it with him, you build it with him, and you can reach him during the build.</p>
+          <p>Jake does — all of it. There is no account manager and nothing gets handed to a subcontractor. You scope it with him, you build it with him, and you can reach him directly while it is being built.</p>
         </details>
         <details>
           <summary>Do I own it?<span class="faq-chevron" aria-hidden="true"></span></summary>
-          <p>Yes. Code, hosting, domain, and data are set up in your name from the start.</p>
+          <p>Yes, and this is set up that way from day one rather than transferred later. The code, the hosting account, the domain, and the data are all in your name. If you ever want to take the whole thing to another developer, nothing is holding it hostage. There is no per-seat licence and no monthly fee to keep using what you paid for.</p>
         </details>
       </div>
 
@@ -222,13 +293,17 @@
   <div class="wrap">
     <div class="footer-links">
       <a href="mailto:wir3ddifferent@gmail.com">wir3ddifferent@gmail.com</a>
+      <a class="footer-tel" href="#" hidden>Call</a>
       <a href="/services">All services</a>
+      <a href="/work">Work</a>
+      <a href="/process">Process</a>
       <a href="/privacy">Privacy</a>
     </div>
-    <p class="copyright">© 2026 Wired Different</p>
+    <p class="footer-area">Wired Different — custom websites, CRMs, and AI assistants. Based in Central Florida, serving small businesses statewide and remote nationwide.</p>
+    <p class="copyright">&copy; 2026 Wired Different</p>
   </div>
 </footer>
 
-<script src="/js/main.js?v=20260909a"></script>
+<script src="/js/main.js?v=20260909b"></script>
 </body>
 </html>

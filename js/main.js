@@ -1,7 +1,34 @@
 (function () {
   "use strict";
 
-  var SCHEDULE_URL = ""; // 2026-09-07: calendly.com/wir3ddifferent/30min was deleted on Calendly (embed showed "URL is not valid"); paste the new event link here. // Paste a Calendly / Cal.com link here to show the "pick a time" button on /consultation.
+  /* ==========================================================================
+     CONFIG — the only place to edit when the pending inputs arrive.
+     Everything below degrades gracefully: an empty string means the related
+     UI is simply not rendered, so nothing ever ships half-finished.
+     ========================================================================== */
+
+  var CONFIG = {
+    // Calendly / Cal.com booking link. Empty = the "Pick a time" block and the
+    // post-submit calendar prompt stay hidden.
+    // 2026-09-07: calendly.com/wir3ddifferent/30min was deleted on Calendly
+    // (the embed showed "URL is not valid"). Paste the replacement event link.
+    SCHEDULE_URL: "",
+
+    // Business phone. Empty = no click-to-call anywhere on the site.
+    // Format: PHONE_DISPLAY is what people read, PHONE_HREF is what dials.
+    PHONE_DISPLAY: "",
+    PHONE_HREF: "",
+
+    // Published price floors. Empty = the price-floor row stays hidden and the
+    // "How pricing works" block still renders without numbers.
+    PRICE_SITE_FROM: "",
+    PRICE_CRM_FROM: "",
+    PRICE_AI_FROM: "",
+  };
+
+  // Tells the inline <head> boot script that the JS layer is alive, so it does
+  // not fall back to "show everything" mode.
+  window.__wdReady = true;
 
   /* ---- Mobile nav toggle ---- */
   var toggle = document.querySelector(".nav-toggle");
@@ -21,6 +48,67 @@
     });
   }
 
+  /* ---- Click-to-call: only rendered once a number is configured ---- */
+  if (CONFIG.PHONE_DISPLAY && CONFIG.PHONE_HREF) {
+    var telHref = "tel:" + CONFIG.PHONE_HREF;
+
+    document.querySelectorAll(".nav-tel, .footer-tel, .mobile-menu__tel").forEach(function (el) {
+      el.href = telHref;
+      el.textContent = el.classList.contains("mobile-menu__tel")
+        ? "Call " + CONFIG.PHONE_DISPLAY
+        : CONFIG.PHONE_DISPLAY;
+      el.classList.add("tel-link");
+      el.hidden = false;
+      el.addEventListener("click", function () {
+        if (window.fbq) window.fbq("track", "Contact");
+        if (window.gtag) window.gtag("event", "click_to_call");
+      });
+    });
+  }
+
+  /* ---- Published price floors: hidden until numbers exist ---- */
+  var priceFloor = document.getElementById("price-floor");
+
+  if (priceFloor && (CONFIG.PRICE_SITE_FROM || CONFIG.PRICE_CRM_FROM || CONFIG.PRICE_AI_FROM)) {
+    var rows = [
+      ["Websites", CONFIG.PRICE_SITE_FROM],
+      ["Custom CRM", CONFIG.PRICE_CRM_FROM],
+      ["AI assistants", CONFIG.PRICE_AI_FROM],
+    ].filter(function (pair) { return pair[1]; });
+
+    var row = priceFloor.querySelector(".price-floor__row");
+    if (row) {
+      rows.forEach(function (pair) {
+        var item = document.createElement("p");
+        item.className = "price-floor__item";
+        item.textContent = pair[0] + " from ";
+        var amount = document.createElement("span");
+        amount.textContent = pair[1];
+        item.appendChild(amount);
+        row.appendChild(item);
+      });
+    }
+    priceFloor.hidden = false;
+  }
+
+  /* ---- Founder photo: swaps itself in the moment the file exists ---- */
+  var monogram = document.querySelector(".about-block__mono");
+
+  if (monogram) {
+    var probe = new Image();
+    probe.onload = function () {
+      var photo = document.createElement("img");
+      photo.src = "/assets/jake.webp";
+      photo.alt = "Jake, founder of Wired Different";
+      photo.width = 200;
+      photo.height = 200;
+      photo.className = "about-block__photo";
+      photo.loading = "lazy";
+      if (monogram.parentNode) monogram.parentNode.replaceChild(photo, monogram);
+    };
+    probe.src = "/assets/jake.webp";
+  }
+
   /* ---- Active nav link ---- */
   function normalizePath(p) {
     p = p.replace(/\/+$/, "");
@@ -33,7 +121,7 @@
 
   document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(function (link) {
     var href = link.getAttribute("href");
-    if (!href) return;
+    if (!href || href.charAt(0) === "#") return;
     var hrefPath = normalizePath(href);
     if (hrefPath === currentPath) {
       link.classList.add("active");
@@ -67,67 +155,99 @@
 
   if (form) {
     var statusBox = document.getElementById("form-status");
+    var submitBtn = form.querySelector(".form-submit");
     var action = form.getAttribute("action") || "";
-    var usesPlaceholder = action.indexOf("YOUR_FORM_ID") !== -1;
+    var submitting = false;
 
     form.addEventListener("submit", function (event) {
-      if (usesPlaceholder) {
-        event.preventDefault();
-        var data = new FormData(form);
-        var lines = [];
-        ["name", "email", "phone", "company", "needs", "message"].forEach(function (key) {
-          var val = data.get(key);
-          if (val) lines.push(key.charAt(0).toUpperCase() + key.slice(1) + ": " + val);
-        });
-        var body = encodeURIComponent(lines.join("\n"));
-        var subject = encodeURIComponent("Consultation request — Wired Different");
-        window.location.href = "mailto:wir3ddifferent@gmail.com?subject=" + subject + "&body=" + body;
-        if (window.fbq) { window.fbq('track', 'Lead'); }
-        if (window.gtag) { window.gtag('event', 'generate_lead'); }
-        showStatus();
-        return;
+      event.preventDefault();
+      if (submitting) return;
+      submitting = true;
+
+      if (submitBtn) {
+        submitBtn.setAttribute("aria-busy", "true");
+        submitBtn.dataset.label = submitBtn.textContent;
+        submitBtn.textContent = "Sending…";
       }
 
-      // Real Formspree endpoint: submit via fetch, show the same inline message.
-      event.preventDefault();
-      var payload = new FormData(form);
       fetch(action, {
         method: "POST",
-        body: payload,
+        body: new FormData(form),
         headers: { Accept: "application/json" },
       })
         .then(function (response) {
-          if (response.ok) {
-            if (window.fbq) { window.fbq('track', 'Lead'); }
-        if (window.gtag) { window.gtag('event', 'generate_lead'); }
-            showStatus();
-            form.reset();
-          } else {
-            showStatus("Something went wrong. Please email wir3ddifferent@gmail.com directly.");
-          }
+          if (!response.ok) throw new Error("bad status");
+          if (window.fbq) window.fbq("track", "Lead");
+          if (window.gtag) window.gtag("event", "generate_lead");
+          form.reset();
+          form.querySelectorAll(".chip").forEach(function (c) {
+            c.setAttribute("aria-pressed", "false");
+          });
+          showSuccess();
         })
         .catch(function () {
-          showStatus("Something went wrong. Please email wir3ddifferent@gmail.com directly.");
+          showError();
+        })
+        .then(function () {
+          submitting = false;
+          if (submitBtn) {
+            submitBtn.removeAttribute("aria-busy");
+            submitBtn.textContent = submitBtn.dataset.label || "Book my free consult";
+          }
         });
     });
 
-    function showStatus(message) {
-      if (!statusBox) return;
-      statusBox.textContent = message || "Thanks — we'll be in touch.";
-      if (!message && SCHEDULE_URL) {
-        statusBox.appendChild(document.createTextNode(" Want to lock in a time now? "));
-        var pick = document.createElement("a");
-        pick.href = SCHEDULE_URL;
-        pick.target = "_blank";
-        pick.rel = "noopener";
-        pick.textContent = "Open the calendar";
-        statusBox.appendChild(pick);
-      }
+    function resetStatus() {
+      if (!statusBox) return null;
+      statusBox.textContent = "";
       statusBox.hidden = false;
       statusBox.setAttribute("role", "status");
+      return statusBox;
+    }
+
+    function showSuccess() {
+      var box = resetStatus();
+      if (!box) return;
+      box.classList.remove("is-error");
+
+      var head = document.createElement("strong");
+      head.textContent = "Got it — your request is in.";
+      box.appendChild(head);
+
+      var next = document.createElement("span");
+      next.textContent =
+        " Jake reads these himself and replies within one business day" +
+        (CONFIG.PHONE_DISPLAY ? ", usually sooner." : ".") +
+        " Nothing else is needed from you right now.";
+      box.appendChild(next);
+
+      if (CONFIG.SCHEDULE_URL) {
+        box.appendChild(document.createElement("br"));
+        var pick = document.createElement("a");
+        pick.href = CONFIG.SCHEDULE_URL;
+        pick.target = "_blank";
+        pick.rel = "noopener";
+        pick.textContent = "Skip the wait — pick a time now →";
+        box.appendChild(pick);
+      }
+    }
+
+    function showError() {
+      var box = resetStatus();
+      if (!box) return;
+      box.classList.add("is-error");
+      box.textContent = "That didn't go through. Email ";
+      var mail = document.createElement("a");
+      mail.href = "mailto:wir3ddifferent@gmail.com?subject=Consultation%20request";
+      mail.textContent = "wir3ddifferent@gmail.com";
+      box.appendChild(mail);
+      box.appendChild(document.createTextNode(
+        CONFIG.PHONE_DISPLAY
+          ? " or call " + CONFIG.PHONE_DISPLAY + " and it gets handled."
+          : " and it gets handled."
+      ));
     }
   }
-
 
   /* ---- Services pillar tabs ---- */
   var pillarTabs = document.querySelectorAll(".pillar-tab");
@@ -193,7 +313,8 @@
       opener.addEventListener("click", function () {
         var img = opener.querySelector("img");
         if (!img || !lightboxImg) return;
-        lightboxImg.src = img.currentSrc || img.src;
+        // Prefer the full-resolution original when the thumbnail is a crop.
+        lightboxImg.src = opener.dataset.full || img.currentSrc || img.src;
         lightboxImg.alt = img.alt || "";
         lastOpener = opener;
         lightbox.showModal();
@@ -222,14 +343,15 @@
   var scheduleLink = document.getElementById("schedule-link");
   var scheduleEmbed = document.getElementById("schedule-embed");
 
-  if (scheduleBlock && scheduleLink && SCHEDULE_URL) {
-    scheduleLink.href = SCHEDULE_URL;
+  if (scheduleBlock && scheduleLink && CONFIG.SCHEDULE_URL) {
+    scheduleLink.href = CONFIG.SCHEDULE_URL;
     scheduleBlock.hidden = false;
 
-    if (scheduleEmbed && /calendly\.com/.test(SCHEDULE_URL)) {
+    if (scheduleEmbed && /calendly\.com/.test(CONFIG.SCHEDULE_URL)) {
       // Inline Calendly widget, themed to the site. Fires a Meta "Schedule" event on booking.
-      var joiner = SCHEDULE_URL.indexOf("?") > -1 ? "&" : "?";
-      var themed = SCHEDULE_URL + joiner + "hide_gdpr_banner=1&background_color=0b1220&text_color=f2f5fa&primary_color=ff6b1a";
+      var joiner = CONFIG.SCHEDULE_URL.indexOf("?") > -1 ? "&" : "?";
+      var themed = CONFIG.SCHEDULE_URL + joiner +
+        "hide_gdpr_banner=1&background_color=0b1220&text_color=f2f5fa&primary_color=ff6b1a";
       var css = document.createElement("link");
       css.rel = "stylesheet";
       css.href = "https://assets.calendly.com/assets/external/widget.css";
@@ -245,23 +367,24 @@
       document.head.appendChild(js);
       window.addEventListener("message", function (event) {
         if (event.origin !== "https://calendly.com" || !event.data) return;
-        if (event.data.event === "calendly.event_scheduled" && window.fbq) {
-          window.fbq("track", "Schedule");
-          if (window.gtag) { window.gtag("event", "schedule"); }
+        if (event.data.event === "calendly.event_scheduled") {
+          if (window.fbq) window.fbq("track", "Schedule");
+          if (window.gtag) window.gtag("event", "schedule");
         }
       });
     }
   }
-})();
 
-  /* Hide floating consult CTA when the form is on screen */
+  /* ---- Hide the floating consult CTA while the form is on screen ---- */
   var stickyCta = document.querySelector(".consult-sticky");
   var bookCard = document.getElementById("book");
+
   if (stickyCta && bookCard && "IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function (entries) {
+    var stickyObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         stickyCta.classList.toggle("is-hidden", entry.isIntersecting);
       });
     }, { threshold: 0.35 });
-    io.observe(bookCard);
+    stickyObserver.observe(bookCard);
   }
+})();
