@@ -3104,3 +3104,60 @@ a.path-card:hover { transform: translateY(-6px); }
   .consult-intro .bullets { display: none; }
   .consult-after { display: none; }
 }
+
+
+/* ---- Get recommended by AI (AI page) ---- */
+.ai-recommend { padding-top: 0.5rem; }
+.ai-recommend-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .ai-recommend-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.75rem;
+  }
+}
+.ai-recommend-copy h2 {
+  font-size: clamp(1.85rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0.4rem 0 0.9rem;
+  text-shadow: 0 0 28px rgba(168, 85, 247, 0.25);
+}
+.ai-recommend-copy .sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+.ai-recommend-copy .bullets { margin: 0 0 1.25rem; }
+.ai-recommend-note {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 1.35rem;
+  max-width: 36rem;
+}
+.ai-recommend-shot {
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(46, 230, 255, 0.12),
+    0 0 60px -20px rgba(168, 85, 247, 0.55),
+    0 24px 60px rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.35);
+}
+.ai-recommend-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ai-recommend-shot figcaption {
+  padding: 0.75rem 1rem 0.95rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
